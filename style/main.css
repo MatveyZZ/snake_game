@@ -1,54 +1,160 @@
 body {
-	margin: 0px;
-	font-family: sans-serif;
+    margin: 0px;
+    font-family: sans-serif;
 }
 
-
 #game {
-	background: #353336;
-	width: 100vw;
-	height: 100vh;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    background: #353336;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 #game-canvas {
-	display: block;
-	border-radius: 5px;	
+    display: block;
+    border-radius: 5px;    
 }
 
 .game-header {
-	padding-top: 1vmin;
-	padding-bottom: 1vmin;
-
-	display: flex;
-	justify-content: space-between;
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+    display: flex;
+    justify-content: space-between;
 }
+
 .game-score {
-	padding: 10px 15px;
-	min-width: 160px;
-	height: 50px;
-	background: #121214;
-	border-radius: 5px;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    padding: 10px 15px;
+    min-width: 160px;
+    height: 50px;
+    background: #121214;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.score-count{
-	font-size: 3vmin;
-	color: #D21855;
-	font-weight: bold;
+
+.score-count {
+    font-size: 3vmin;
+    color: #D21855;
+    font-weight: bold;
 }
 
 .canvas-wrapper {
-	background-color: #161618;
-	border-radius: 5px;
-	border: 10px solid #161618;
-	box-shadow: 0px 0px 40px 10px #161618;
+    background-color: #161618;
+    border-radius: 5px;
+    border: 10px solid #161618;
+    box-shadow: 0px 0px 40px 10px #161618;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23525053'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
 
-	background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23525053'/%3E%3C/g%3E%3C/svg%3E%0A");
+/* Стили для мобильного управления */
+#touch-controls {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    display: none; /* По умолчанию скрыто, показывается только на мобильных */
+}
+
+.touch-area {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.touch-area:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#touch-up {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+}
+
+#touch-left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+}
+
+#touch-down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+}
+
+#touch-right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+}
+
+/* Стили для кнопки резюме */
+#resume-button-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#resume-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #D21855, #FA0556);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(218, 24, 85, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#resume-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(218, 24, 85, 0.6);
+    background: linear-gradient(45deg, #FA0556, #D21855);
+}
+
+#resume-button:active {
+    transform: translateY(1px);
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    #touch-controls {
+        display: block;
+    }
+    
+    .game-score {
+        min-width: 120px;
+        height: 40px;
+    }
+    
+    #resume-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
 }
